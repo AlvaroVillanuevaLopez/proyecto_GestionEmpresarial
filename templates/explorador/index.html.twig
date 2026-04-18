@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ExploradorController!{% endblock %}
+
+{% block body %}
+<h1>Explorador SFTP</h1>
+
+<ul>
+    {% for empresa in empresas %}
+        <li>
+            <a href="{{ path('explorador_empresa', {id: empresa.id}) }}">
+                {{ empresa.nombre }}
+            </a>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}
