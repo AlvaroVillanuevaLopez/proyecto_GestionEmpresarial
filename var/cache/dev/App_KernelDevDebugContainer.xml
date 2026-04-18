@@ -7402,10 +7402,10 @@
       <argument>null</argument>
       <argument type="collection">
         <argument key="path">app_logout</argument>
+        <argument key="target">app_login</argument>
         <argument key="enable_csrf">null</argument>
         <argument key="csrf_token_id">logout</argument>
         <argument key="csrf_parameter">_csrf_token</argument>
-        <argument key="target">/</argument>
         <argument key="invalidate_session">true</argument>
         <argument key="clear_site_data" type="collection"/>
         <argument key="delete_cookies" type="collection"/>
@@ -7451,7 +7451,7 @@
     <service id="security.logout.listener.default.main" class="Symfony\Component\Security\Http\EventListener\DefaultLogoutListener">
       <tag name="kernel.event_subscriber" dispatcher="debug.security.event_dispatcher.main"/>
       <argument type="service" id="security.http_utils"/>
-      <argument>/</argument>
+      <argument>app_login</argument>
     </service>
     <service id="security.logout.listener.session.main" class="Symfony\Component\Security\Http\EventListener\SessionLogoutListener">
       <tag name="kernel.event_subscriber" dispatcher="debug.security.event_dispatcher.main"/>
@@ -7869,6 +7869,28 @@
     </service>
     <service id="flysystem.adapter.lazy.factory" class="League\FlysystemBundle\Lazy\LazyFactory">
       <argument type="service" id=".service_locator.PsHtxvr"/>
+    </service>
+    <service id="League\FlysystemBundle\Command\PushCommand" class="League\FlysystemBundle\Command\PushCommand">
+      <tag name="console.command"/>
+      <tag name="container.no_preload"/>
+      <argument type="service" id=".service_locator.aeAgM4g"/>
+      <call method="setName">
+        <argument>flysystem:push</argument>
+      </call>
+      <call method="setDescription">
+        <argument>Push a local file to a configured Flysystem storage.</argument>
+      </call>
+    </service>
+    <service id="League\FlysystemBundle\Command\PullCommand" class="League\FlysystemBundle\Command\PullCommand">
+      <tag name="console.command"/>
+      <tag name="container.no_preload"/>
+      <argument type="service" id=".service_locator.aeAgM4g"/>
+      <call method="setName">
+        <argument>flysystem:pull</argument>
+      </call>
+      <call method="setDescription">
+        <argument>Pull a file from a configured Flysystem storage to the local filesystem.</argument>
+      </call>
     </service>
     <service id="flysystem.adapter.default.storage" class="League\Flysystem\Local\LocalFilesystemAdapter">
       <argument>C:\Users\izano\PRACTICAS DAW 2026\Sistema_de_Gestion_Documental_SFTP/var/storage/default</argument>
@@ -9186,8 +9208,6 @@
         <argument key="default.storage" type="service_closure" id="default.storage"/>
       </argument>
     </service>
-    <service id="League\Flysystem\GoogleCloudStorage\PortableVisibilityHandler" class="League\Flysystem\GoogleCloudStorage\PortableVisibilityHandler"/>
-    <service id="League\Flysystem\GoogleCloudStorage\UniformBucketLevelAccessVisibility" class="League\Flysystem\GoogleCloudStorage\UniformBucketLevelAccessVisibility"/>
     <service id=".service_locator.6KVxCv0" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -9403,6 +9423,12 @@
         <argument key="security.user_checker_locator" type="service_closure" id="security.user_checker_locator"/>
         <argument key="security.firewall.event_dispatcher_locator" type="service_closure" id="security.firewall.event_dispatcher_locator"/>
         <argument key="security.csrf.token_manager" type="service_closure" id="security.csrf.same_origin_token_manager" on-invalid="ignore"/>
+      </argument>
+    </service>
+    <service id=".service_locator.aeAgM4g" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="default.storage" type="service_closure" id="default.storage"/>
       </argument>
     </service>
     <service id="debug.validator.inner" class="Symfony\Component\Validator\Validator\ValidatorInterface">
@@ -10202,6 +10228,20 @@
       <argument>false</argument>
       <argument type="service_closure" id="security.command.role_hierarchy_dump"/>
     </service>
+    <service id=".League\FlysystemBundle\Command\PushCommand.lazy" class="Symfony\Component\Console\Command\LazyCommand">
+      <argument>flysystem:push</argument>
+      <argument type="collection"/>
+      <argument>Push a local file to a configured Flysystem storage.</argument>
+      <argument>false</argument>
+      <argument type="service_closure" id="League\FlysystemBundle\Command\PushCommand"/>
+    </service>
+    <service id=".League\FlysystemBundle\Command\PullCommand.lazy" class="Symfony\Component\Console\Command\LazyCommand">
+      <argument>flysystem:pull</argument>
+      <argument type="collection"/>
+      <argument>Pull a file from a configured Flysystem storage to the local filesystem.</argument>
+      <argument>false</argument>
+      <argument type="service_closure" id="League\FlysystemBundle\Command\PullCommand"/>
+    </service>
     <service id=".maker.auto_command.make_auth.lazy" class="Symfony\Component\Console\Command\LazyCommand">
       <argument>make:auth</argument>
       <argument type="collection"/>
@@ -10398,7 +10438,7 @@
     </service>
     <service id="console.command_loader" class="Symfony\Component\Console\CommandLoader\ContainerCommandLoader" public="true">
       <tag name="container.no_preload"/>
-      <argument type="service" id=".service_locator.xHBqQc."/>
+      <argument type="service" id=".service_locator.9jJOSKw"/>
       <argument type="collection">
         <argument key="about">console.command.about</argument>
         <argument key="assets:install">console.command.assets_install</argument>
@@ -10491,6 +10531,8 @@
         <argument key="debug:firewall">security.command.debug_firewall</argument>
         <argument key="security:hash-password">security.command.user_password_hash</argument>
         <argument key="debug:security:role-hierarchy">security.command.role_hierarchy_dump</argument>
+        <argument key="flysystem:push">League\FlysystemBundle\Command\PushCommand</argument>
+        <argument key="flysystem:pull">League\FlysystemBundle\Command\PullCommand</argument>
         <argument key="make:auth">maker.auto_command.make_auth</argument>
         <argument key="make:command">maker.auto_command.make_command</argument>
         <argument key="make:twig-component">maker.auto_command.make_twig_component</argument>
@@ -10523,7 +10565,7 @@
         <argument key="make:webhook">maker.auto_command.make_webhook</argument>
       </argument>
     </service>
-    <service id=".service_locator.xHBqQc." class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.9jJOSKw" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="console.command.about" type="service_closure" id=".console.command.about.lazy"/>
@@ -10617,6 +10659,8 @@
         <argument key="security.command.debug_firewall" type="service_closure" id=".security.command.debug_firewall.lazy"/>
         <argument key="security.command.user_password_hash" type="service_closure" id=".security.command.user_password_hash.lazy"/>
         <argument key="security.command.role_hierarchy_dump" type="service_closure" id=".security.command.role_hierarchy_dump.lazy"/>
+        <argument key="League\FlysystemBundle\Command\PushCommand" type="service_closure" id=".League\FlysystemBundle\Command\PushCommand.lazy"/>
+        <argument key="League\FlysystemBundle\Command\PullCommand" type="service_closure" id=".League\FlysystemBundle\Command\PullCommand.lazy"/>
         <argument key="maker.auto_command.make_auth" type="service_closure" id=".maker.auto_command.make_auth.lazy"/>
         <argument key="maker.auto_command.make_command" type="service_closure" id=".maker.auto_command.make_command.lazy"/>
         <argument key="maker.auto_command.make_twig_component" type="service_closure" id=".maker.auto_command.make_twig_component.lazy"/>
@@ -10951,8 +10995,6 @@
     <service id="Psr\Log\LoggerInterface $securityLogger" alias="monolog.logger.security"/>
     <service id=".Psr\Log\LoggerInterface $deprecation" alias="monolog.logger.deprecation"/>
     <service id="Psr\Log\LoggerInterface $deprecationLogger" alias="monolog.logger.deprecation"/>
-    <service id="flysystem.adapter.gcloud.visibility.portable" alias="League\Flysystem\GoogleCloudStorage\PortableVisibilityHandler"/>
-    <service id="flysystem.adapter.gcloud.visibility.uniform" alias="League\Flysystem\GoogleCloudStorage\UniformBucketLevelAccessVisibility"/>
     <service id=".service_locator.O8.cMm9" alias="messenger.receiver_locator"/>
     <service id=".service_locator.oeWXF0n" alias="messenger.retry_strategy_locator"/>
     <service id=".service_locator.S9tnIXR" alias=".service_locator.DA6YX9k"/>

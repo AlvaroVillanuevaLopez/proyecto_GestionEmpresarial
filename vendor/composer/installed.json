@@ -1390,17 +1390,17 @@
         },
         {
             "name": "league/flysystem-bundle",
-            "version": "3.6.2",
-            "version_normalized": "3.6.2.0",
+            "version": "3.7.0",
+            "version_normalized": "3.7.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem-bundle.git",
-                "reference": "123ab96910177751faf3b6cc85eecc360ec12a1f"
+                "reference": "5eb41be38fc3759f74c9e458a6a5f0ef5f49284a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem-bundle/zipball/123ab96910177751faf3b6cc85eecc360ec12a1f",
-                "reference": "123ab96910177751faf3b6cc85eecc360ec12a1f",
+                "url": "https://api.github.com/repos/thephpleague/flysystem-bundle/zipball/5eb41be38fc3759f74c9e458a6a5f0ef5f49284a",
+                "reference": "5eb41be38fc3759f74c9e458a6a5f0ef5f49284a",
                 "shasum": ""
             },
             "require": {
@@ -1430,7 +1430,7 @@
                 "symfony/phpunit-bridge": "^6.0 || ^7.0 || ^8.0",
                 "symfony/var-dumper": "^6.0 || ^7.0 || ^8.0"
             },
-            "time": "2026-02-05T15:26:57+00:00",
+            "time": "2026-03-28T22:14:56+00:00",
             "type": "symfony-bundle",
             "installation-source": "source",
             "autoload": {
@@ -1457,7 +1457,7 @@
             ],
             "support": {
                 "issues": "https://github.com/thephpleague/flysystem-bundle/issues",
-                "source": "https://github.com/thephpleague/flysystem-bundle/tree/3.6.2"
+                "source": "https://github.com/thephpleague/flysystem-bundle/tree/3.7.0"
             },
             "install-path": "../league/flysystem-bundle"
         },

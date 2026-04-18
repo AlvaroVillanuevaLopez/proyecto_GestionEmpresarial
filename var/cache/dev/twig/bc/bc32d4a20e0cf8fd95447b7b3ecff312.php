@@ -98,8 +98,10 @@ class __TwigTemplate_b665ddebc4a29aaf0d904ac5260c1153 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         // line 6
-        yield "<h1>Archivos PDF de ";
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["empresa"]) || array_key_exists("empresa", $context) ? $context["empresa"] : (function () { throw new RuntimeError('Variable "empresa" does not exist.', 6, $this->source); })()), "nombre", [], "any", false, false, false, 6), "html", null, true);
+        yield "<meta name=\"turbo-visit-control\" content=\"reload\">
+<h1>Archivos PDF de ";
+        // line 7
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["empresa"]) || array_key_exists("empresa", $context) ? $context["empresa"] : (function () { throw new RuntimeError('Variable "empresa" does not exist.', 7, $this->source); })()), "nombre", [], "any", false, false, false, 7), "html", null, true);
         yield "</h1>
 
 <div id=\"estado\">
@@ -119,18 +121,18 @@ class __TwigTemplate_b665ddebc4a29aaf0d904ac5260c1153 extends Template
 <div id=\"estado-subida\"></div>
 
 <a href=\"";
-        // line 24
+        // line 25
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("explorador_index");
         yield "\">Volver</a>
 
 <script>
 const urlArchivos = \"";
-        // line 27
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("explorador_archivos_json", ["id" => CoreExtension::getAttribute($this->env, $this->source, (isset($context["empresa"]) || array_key_exists("empresa", $context) ? $context["empresa"] : (function () { throw new RuntimeError('Variable "empresa" does not exist.', 27, $this->source); })()), "id", [], "any", false, false, false, 27)]), "html", null, true);
+        // line 28
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("explorador_archivos_json", ["id" => CoreExtension::getAttribute($this->env, $this->source, (isset($context["empresa"]) || array_key_exists("empresa", $context) ? $context["empresa"] : (function () { throw new RuntimeError('Variable "empresa" does not exist.', 28, $this->source); })()), "id", [], "any", false, false, false, 28)]), "html", null, true);
         yield "\";
 const urlSubir = \"";
-        // line 28
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("explorador_subir", ["id" => CoreExtension::getAttribute($this->env, $this->source, (isset($context["empresa"]) || array_key_exists("empresa", $context) ? $context["empresa"] : (function () { throw new RuntimeError('Variable "empresa" does not exist.', 28, $this->source); })()), "id", [], "any", false, false, false, 28)]), "html", null, true);
+        // line 29
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("explorador_subir", ["id" => CoreExtension::getAttribute($this->env, $this->source, (isset($context["empresa"]) || array_key_exists("empresa", $context) ? $context["empresa"] : (function () { throw new RuntimeError('Variable "empresa" does not exist.', 29, $this->source); })()), "id", [], "any", false, false, false, 29)]), "html", null, true);
         yield "\";
 
 let cargando = false;
@@ -243,7 +245,7 @@ document.getElementById('form-subida').addEventListener('submit', async (e) => {
      */
     public function getDebugInfo(): array
     {
-        return array (  133 => 28,  129 => 27,  123 => 24,  101 => 6,  88 => 5,  64 => 3,  41 => 1,);
+        return array (  135 => 29,  131 => 28,  125 => 25,  104 => 7,  101 => 6,  88 => 5,  64 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -253,6 +255,7 @@ document.getElementById('form-subida').addEventListener('submit', async (e) => {
 {% block title %}{{ empresa.nombre }} — Archivos PDF{% endblock %}
 
 {% block body %}
+<meta name=\"turbo-visit-control\" content=\"reload\">
 <h1>Archivos PDF de {{ empresa.nombre }}</h1>
 
 <div id=\"estado\">

@@ -97,7 +97,7 @@ class __TwigTemplate_78775c22f3b9aff56f6f513415ba46e0 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         // line 6
-        yield "    <form method=\"post\">
+        yield "<form method=\"post\" data-turbo=\"false\">
         ";
         // line 7
         if ((($tmp = (isset($context["error"]) || array_key_exists("error", $context) ? $context["error"] : (function () { throw new RuntimeError('Variable "error" does not exist.', 7, $this->source); })())) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
@@ -186,7 +186,7 @@ class __TwigTemplate_78775c22f3b9aff56f6f513415ba46e0 extends Template
 {% block title %}Log in!{% endblock %}
 
 {% block body %}
-    <form method=\"post\">
+<form method=\"post\" data-turbo=\"false\">
         {% if error %}
             <div class=\"alert alert-danger\">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
         {% endif %}

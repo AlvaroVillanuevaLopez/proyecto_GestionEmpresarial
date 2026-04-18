@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
-
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 #[Route('/explorador')]
 class ExploradorController extends AbstractController
 {
@@ -41,23 +41,28 @@ public function archivosJson(Empresa $empresa, GestorSftpService $gestor): JsonR
     }
 }
 
-    #[Route('/{id<\d+>}/subir', name: 'explorador_subir', methods: ['POST'])]
-    public function subir(Request $request, Empresa $empresa, GestorSftpService $gestor): JsonResponse
-    {
-        $archivo = $request->files->get('pdf');
+#[Route('/{id<\d+>}/subir', name: 'explorador_subir', methods: ['POST'])]
+public function subir(Request $request, Empresa $empresa, GestorSftpService $gestor): JsonResponse
+{
+    if (!$this->getUser()) {
+        return $this->json(['success' => false, 'error' => 'No autenticado'], 401);
+    }
 
-        if (!$archivo || $archivo->getMimeType() !== 'application/pdf') {
-            return $this->json(['success' => false, 'error' => 'Solo se permiten archivos PDF'], 400);
-        }
+    $archivo = $request->files->get('pdf');
 
-        try {
-            $nombreBackup = $gestor->subirPdf($empresa, $archivo);
-            return $this->json([
-                'success' => true,
-                'nombreBackup' => $nombreBackup
-            ]);
-        } catch (\Exception $e) {
-            return $this->json(['success' => false, 'error' => $e->getMessage()], 500);
-        }
+    if (!$archivo instanceof UploadedFile || $archivo->getMimeType() !== 'application/pdf') {
+        return $this->json(['success' => false, 'error' => 'Solo se permiten archivos PDF'], 400);
+    }
+
+    try {
+        $nombreBackup = $gestor->subirPdf($empresa, $archivo);
+        return $this->json([
+            'success' => true,
+            'nombreBackup' => $nombreBackup
+        ]);
+    } catch (\Exception $e) {
+        return $this->json(['success' => false, 'error' => $e->getMessage()], 500);
     }
 }
+}
+
