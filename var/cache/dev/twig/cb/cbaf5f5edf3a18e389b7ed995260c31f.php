@@ -177,6 +177,6 @@ class __TwigTemplate_cd0d5a8a715d5e2d17c3a27e144e8816 extends Template
     {% endfor %}
 </ul>
 {% endblock %}
-", "explorador/index.html.twig", "C:\\Users\\izano\\PRACTICAS DAW 2026\\Sistema_de_Gestion_Documental_SFTP\\templates\\explorador\\index.html.twig");
+", "explorador/index.html.twig", "C:\\Users\\alvar\\OneDrive\\Escritorio\\VISUAL-STUDIO-CODE\\proyecto_GestionDocumental\\templates\\explorador\\index.html.twig");
     }
 }

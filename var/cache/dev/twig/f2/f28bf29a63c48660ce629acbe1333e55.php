@@ -98,22 +98,23 @@ class __TwigTemplate_78c630771500e5e1a1da7cd70276b348 extends Template
 
         // line 6
         yield "<div class=\"contenedor\">
-    <h1>EDITAR  EMPRESA</h1>
+    <h1>Editar Empresa</h1>
 
     ";
         // line 9
         yield Twig\Extension\CoreExtension::include($this->env, $context, "empresa/_form.html.twig", ["button_label" => "ACTUALIZAR"]);
         yield "
+    <br>
     ";
-        // line 10
+        // line 11
         yield Twig\Extension\CoreExtension::include($this->env, $context, "empresa/_delete_form.html.twig");
         yield "
     <br>
     <a href=\"";
-        // line 12
+        // line 13
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_empresa_index");
         yield "\">Volver al índice</a>
-</div>
+</div>  
 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -145,7 +146,7 @@ class __TwigTemplate_78c630771500e5e1a1da7cd70276b348 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  114 => 12,  109 => 10,  105 => 9,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
+        return array (  115 => 13,  110 => 11,  105 => 9,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -156,14 +157,15 @@ class __TwigTemplate_78c630771500e5e1a1da7cd70276b348 extends Template
 
 {% block body %}
 <div class=\"contenedor\">
-    <h1>EDITAR  EMPRESA</h1>
+    <h1>Editar Empresa</h1>
 
     {{ include('empresa/_form.html.twig', {'button_label': 'ACTUALIZAR'}) }}
+    <br>
     {{ include('empresa/_delete_form.html.twig') }}
     <br>
     <a href=\"{{ path('app_empresa_index') }}\">Volver al índice</a>
-</div>
+</div>  
 {% endblock %}
-", "empresa/edit.html.twig", "C:\\Users\\alvar\\OneDrive\\Escritorio\\VISUAL-STUDIO-CODE\\proyecto_GestionEmpresarial\\templates\\empresa\\edit.html.twig");
+", "empresa/edit.html.twig", "C:\\Users\\alvar\\OneDrive\\Escritorio\\VISUAL-STUDIO-CODE\\proyecto_GestionDocumental\\templates\\empresa\\edit.html.twig");
     }
 }

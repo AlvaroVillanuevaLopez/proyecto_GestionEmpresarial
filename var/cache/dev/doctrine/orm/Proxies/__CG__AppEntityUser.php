@@ -22,14 +22,14 @@ class User extends \App\Entity\User implements \Doctrine\ORM\Proxy\InternalProxy
     
 
     private const LAZY_OBJECT_PROPERTY_SCOPES = [
+        "\0".parent::class."\0".'email' => [parent::class, 'email', null, 16],
         "\0".parent::class."\0".'id' => [parent::class, 'id', null, 16],
         "\0".parent::class."\0".'password' => [parent::class, 'password', null, 16],
         "\0".parent::class."\0".'roles' => [parent::class, 'roles', null, 16],
-        "\0".parent::class."\0".'username' => [parent::class, 'username', null, 16],
+        'email' => [parent::class, 'email', null, 16],
         'id' => [parent::class, 'id', null, 16],
         'password' => [parent::class, 'password', null, 16],
         'roles' => [parent::class, 'roles', null, 16],
-        'username' => [parent::class, 'username', null, 16],
     ];
 
     public function __isInitialized(): bool

@@ -249,6 +249,6 @@ class __TwigTemplate_e0f1dd92ee2c3a34f656ca7813f20104 extends Template
 
     {{ include('empresa/_delete_form.html.twig') }}
 {% endblock %}
-", "empresa/show.html.twig", "C:\\Users\\izano\\PRACTICAS DAW 2026\\Sistema_de_Gestion_Documental_SFTP\\templates\\empresa\\show.html.twig");
+", "empresa/show.html.twig", "C:\\Users\\alvar\\OneDrive\\Escritorio\\VISUAL-STUDIO-CODE\\proyecto_GestionDocumental\\templates\\empresa\\show.html.twig");
     }
 }

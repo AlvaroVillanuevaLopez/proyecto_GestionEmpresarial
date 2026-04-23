@@ -52,7 +52,7 @@ class __TwigTemplate_aa45bc71d79f411b3e96d6ebd6fc4737 extends Template
         // line 2
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderCsrfToken(("delete" . CoreExtension::getAttribute($this->env, $this->source, (isset($context["empresa"]) || array_key_exists("empresa", $context) ? $context["empresa"] : (function () { throw new RuntimeError('Variable "empresa" does not exist.', 2, $this->source); })()), "id", [], "any", false, false, false, 2))), "html", null, true);
         yield "\">
-    <button class=\"btn\">Delete</button>
+    <button id=\"cartero\">ELIMINAR</button>
 </form>
 ";
         
@@ -92,8 +92,8 @@ class __TwigTemplate_aa45bc71d79f411b3e96d6ebd6fc4737 extends Template
     {
         return new Source("<form method=\"post\" action=\"{{ path('app_empresa_delete', {'id': empresa.id}) }}\" onsubmit=\"return confirm('Are you sure you want to delete this item?');\">
     <input type=\"hidden\" name=\"_token\" value=\"{{ csrf_token('delete' ~ empresa.id) }}\">
-    <button class=\"btn\">Delete</button>
+    <button id=\"cartero\">ELIMINAR</button>
 </form>
-", "empresa/_delete_form.html.twig", "C:\\Users\\izano\\PRACTICAS DAW 2026\\Sistema_de_Gestion_Documental_SFTP\\templates\\empresa\\_delete_form.html.twig");
+", "empresa/_delete_form.html.twig", "C:\\Users\\alvar\\OneDrive\\Escritorio\\VISUAL-STUDIO-CODE\\proyecto_GestionDocumental\\templates\\empresa\\_delete_form.html.twig");
     }
 }

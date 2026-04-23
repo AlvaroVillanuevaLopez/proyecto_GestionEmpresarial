@@ -73,7 +73,7 @@ class __TwigTemplate_216b9a713299947845d186a0f216eaed extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "title"));
 
-        yield "New Empresa";
+        yield "Nueva Empresa";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
 
@@ -97,17 +97,19 @@ class __TwigTemplate_216b9a713299947845d186a0f216eaed extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         // line 6
-        yield "    <h1>Create new Empresa</h1>
+        yield "<div class=\"contenedor\">
+    <h1>Crear Una Nueva Empresa</h1>
 
     ";
-        // line 8
+        // line 9
         yield Twig\Extension\CoreExtension::include($this->env, $context, "empresa/_form.html.twig");
         yield "
-
+    <br>
     <a href=\"";
-        // line 10
+        // line 11
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_empresa_index");
-        yield "\">back to list</a>
+        yield "\">Volver al índice</a>
+</div>
 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -139,22 +141,24 @@ class __TwigTemplate_216b9a713299947845d186a0f216eaed extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  109 => 10,  104 => 8,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
+        return array (  110 => 11,  105 => 9,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
     {
         return new Source("{% extends 'base.html.twig' %}
 
-{% block title %}New Empresa{% endblock %}
+{% block title %}Nueva Empresa{% endblock %}
 
 {% block body %}
-    <h1>Create new Empresa</h1>
+<div class=\"contenedor\">
+    <h1>Crear Una Nueva Empresa</h1>
 
     {{ include('empresa/_form.html.twig') }}
-
-    <a href=\"{{ path('app_empresa_index') }}\">back to list</a>
+    <br>
+    <a href=\"{{ path('app_empresa_index') }}\">Volver al índice</a>
+</div>
 {% endblock %}
-", "empresa/new.html.twig", "C:\\Users\\izano\\PRACTICAS DAW 2026\\Sistema_de_Gestion_Documental_SFTP\\templates\\empresa\\new.html.twig");
+", "empresa/new.html.twig", "C:\\Users\\alvar\\OneDrive\\Escritorio\\VISUAL-STUDIO-CODE\\proyecto_GestionDocumental\\templates\\empresa\\new.html.twig");
     }
 }

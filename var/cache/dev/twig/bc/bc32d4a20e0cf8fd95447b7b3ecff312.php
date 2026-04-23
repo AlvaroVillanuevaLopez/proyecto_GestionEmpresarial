@@ -99,40 +99,41 @@ class __TwigTemplate_b665ddebc4a29aaf0d904ac5260c1153 extends Template
 
         // line 6
         yield "<meta name=\"turbo-visit-control\" content=\"reload\">
-<h1>Archivos PDF de ";
-        // line 7
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["empresa"]) || array_key_exists("empresa", $context) ? $context["empresa"] : (function () { throw new RuntimeError('Variable "empresa" does not exist.', 7, $this->source); })()), "nombre", [], "any", false, false, false, 7), "html", null, true);
+<div class=\"contenedor\">
+    <h1>Archivos PDF de ";
+        // line 8
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["empresa"]) || array_key_exists("empresa", $context) ? $context["empresa"] : (function () { throw new RuntimeError('Variable "empresa" does not exist.', 8, $this->source); })()), "nombre", [], "any", false, false, false, 8), "html", null, true);
         yield "</h1>
 
-<div id=\"estado\">
-    <p>⏳ Conectando con el servidor SFTP...</p>
+    <div id=\"estado\">
+        <p>⏳ Conectando con el servidor SFTP...</p>
+    </div>
+
+    <ul id=\"lista-pdfs\" style=\"display:none\"></ul>
+
+    <hr>
+    <h2>Subir PDF</h2>
+
+    <form id=\"form-subida\">
+        <input type=\"file\" id=\"input-pdf\" accept=\".pdf\" required>
+        <button type=\"submit\" id=\"cartero\">Subir</button>
+    </form>
+
+    <div id=\"estado-subida\"></div>
+    <br>
+    <a href=\"";
+        // line 26
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_empresa_index");
+        yield "\">Volver al índice</a>
 </div>
-
-<ul id=\"lista-pdfs\" style=\"display:none\"></ul>
-
-<hr>
-<h2>Subir PDF</h2>
-
-<form id=\"form-subida\">
-    <input type=\"file\" id=\"input-pdf\" accept=\".pdf\" required>
-    <button type=\"submit\">Subir</button>
-</form>
-
-<div id=\"estado-subida\"></div>
-
-<a href=\"";
-        // line 25
-        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("explorador_index");
-        yield "\">Volver</a>
-
 <script>
 const urlArchivos = \"";
-        // line 28
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("explorador_archivos_json", ["id" => CoreExtension::getAttribute($this->env, $this->source, (isset($context["empresa"]) || array_key_exists("empresa", $context) ? $context["empresa"] : (function () { throw new RuntimeError('Variable "empresa" does not exist.', 28, $this->source); })()), "id", [], "any", false, false, false, 28)]), "html", null, true);
+        // line 29
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("explorador_archivos_json", ["id" => CoreExtension::getAttribute($this->env, $this->source, (isset($context["empresa"]) || array_key_exists("empresa", $context) ? $context["empresa"] : (function () { throw new RuntimeError('Variable "empresa" does not exist.', 29, $this->source); })()), "id", [], "any", false, false, false, 29)]), "html", null, true);
         yield "\";
 const urlSubir = \"";
-        // line 29
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("explorador_subir", ["id" => CoreExtension::getAttribute($this->env, $this->source, (isset($context["empresa"]) || array_key_exists("empresa", $context) ? $context["empresa"] : (function () { throw new RuntimeError('Variable "empresa" does not exist.', 29, $this->source); })()), "id", [], "any", false, false, false, 29)]), "html", null, true);
+        // line 30
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("explorador_subir", ["id" => CoreExtension::getAttribute($this->env, $this->source, (isset($context["empresa"]) || array_key_exists("empresa", $context) ? $context["empresa"] : (function () { throw new RuntimeError('Variable "empresa" does not exist.', 30, $this->source); })()), "id", [], "any", false, false, false, 30)]), "html", null, true);
         yield "\";
 
 let cargando = false;
@@ -245,7 +246,7 @@ document.getElementById('form-subida').addEventListener('submit', async (e) => {
      */
     public function getDebugInfo(): array
     {
-        return array (  135 => 29,  131 => 28,  125 => 25,  104 => 7,  101 => 6,  88 => 5,  64 => 3,  41 => 1,);
+        return array (  136 => 30,  132 => 29,  126 => 26,  105 => 8,  101 => 6,  88 => 5,  64 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -256,26 +257,27 @@ document.getElementById('form-subida').addEventListener('submit', async (e) => {
 
 {% block body %}
 <meta name=\"turbo-visit-control\" content=\"reload\">
-<h1>Archivos PDF de {{ empresa.nombre }}</h1>
+<div class=\"contenedor\">
+    <h1>Archivos PDF de {{ empresa.nombre }}</h1>
 
-<div id=\"estado\">
-    <p>⏳ Conectando con el servidor SFTP...</p>
+    <div id=\"estado\">
+        <p>⏳ Conectando con el servidor SFTP...</p>
+    </div>
+
+    <ul id=\"lista-pdfs\" style=\"display:none\"></ul>
+
+    <hr>
+    <h2>Subir PDF</h2>
+
+    <form id=\"form-subida\">
+        <input type=\"file\" id=\"input-pdf\" accept=\".pdf\" required>
+        <button type=\"submit\" id=\"cartero\">Subir</button>
+    </form>
+
+    <div id=\"estado-subida\"></div>
+    <br>
+    <a href=\"{{ path('app_empresa_index') }}\">Volver al índice</a>
 </div>
-
-<ul id=\"lista-pdfs\" style=\"display:none\"></ul>
-
-<hr>
-<h2>Subir PDF</h2>
-
-<form id=\"form-subida\">
-    <input type=\"file\" id=\"input-pdf\" accept=\".pdf\" required>
-    <button type=\"submit\">Subir</button>
-</form>
-
-<div id=\"estado-subida\"></div>
-
-<a href=\"{{ path('explorador_index') }}\">Volver</a>
-
 <script>
 const urlArchivos = \"{{ path('explorador_archivos_json', {id: empresa.id}) }}\";
 const urlSubir = \"{{ path('explorador_subir', {id: empresa.id}) }}\";
@@ -359,6 +361,6 @@ document.getElementById('form-subida').addEventListener('submit', async (e) => {
     }
 });
 </script>
-{% endblock %}", "explorador/empresa.html.twig", "C:\\Users\\izano\\PRACTICAS DAW 2026\\Sistema_de_Gestion_Documental_SFTP\\templates\\explorador\\empresa.html.twig");
+{% endblock %}", "explorador/empresa.html.twig", "C:\\Users\\alvar\\OneDrive\\Escritorio\\VISUAL-STUDIO-CODE\\proyecto_GestionDocumental\\templates\\explorador\\empresa.html.twig");
     }
 }

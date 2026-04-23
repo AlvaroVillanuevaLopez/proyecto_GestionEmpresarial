@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Empresa;
 use App\Form\EmpresaType;
 use App\Repository\EmpresaRepository;
+use App\Repository\HistorialSubidasRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,10 +19,12 @@ final class EmpresaController extends AbstractController
 
         }
     #[Route(name: 'app_empresa_index', methods: ['GET'])]
-    public function index(EmpresaRepository $empresaRepository): Response
+    public function index(EmpresaRepository $empresaRepository, HistorialSubidasRepository $historialSubidasRepository ): Response
     {
         return $this->render('empresa/index.html.twig', [
             'empresas' => $empresaRepository->findAll(),
+            'historial' => $historialSubidasRepository->findAll()
+
         ]);
     }
 
@@ -60,6 +63,7 @@ public function new(Request $request, EmpresaRepository $empresaRepository): Res
     }
 
 #[Route('/{id<\d+>}/edit', name: 'app_empresa_edit', methods: ['GET', 'POST'])]
+#[IsGranted('ROLE_ADMIN')]
 public function edit(Request $request, Empresa $empresa, EmpresaRepository $empresaRepository): Response
 {
     $form = $this->createForm(EmpresaType::class, $empresa);
