@@ -27,6 +27,7 @@ return [
     'explorador_empresa' => [['id'], ['_controller' => 'App\\Controller\\ExploradorController::empresa'], ['id' => '\\d+'], [['variable', '/', '\\d+', 'id', true], ['text', '/explorador']], [], [], []],
     'explorador_archivos_json' => [['id'], ['_controller' => 'App\\Controller\\ExploradorController::archivosJson'], ['id' => '\\d+'], [['text', '/archivos'], ['variable', '/', '\\d+', 'id', true], ['text', '/explorador']], [], [], []],
     'explorador_subir' => [['id'], ['_controller' => 'App\\Controller\\ExploradorController::subir'], ['id' => '\\d+'], [['text', '/subir'], ['variable', '/', '\\d+', 'id', true], ['text', '/explorador']], [], [], []],
+    'explorador_eliminar' => [['id'], ['_controller' => 'App\\Controller\\ExploradorController::eliminar'], ['id' => '\\d+'], [['text', '/eliminar'], ['variable', '/', '\\d+', 'id', true], ['text', '/explorador']], [], [], []],
     'app_login' => [[], ['_controller' => 'App\\Controller\\SecurityController::login'], [], [['text', '/login']], [], [], []],
     'app_logout' => [[], ['_controller' => 'App\\Controller\\SecurityController::logout'], [], [['text', '/logout']], [], [], []],
     'App\Controller\EmpresaController::index' => [[], ['_controller' => 'App\\Controller\\EmpresaController::index'], [], [['text', '/empresa']], [], [], []],
@@ -38,6 +39,7 @@ return [
     'App\Controller\ExploradorController::empresa' => [['id'], ['_controller' => 'App\\Controller\\ExploradorController::empresa'], ['id' => '\\d+'], [['variable', '/', '\\d+', 'id', true], ['text', '/explorador']], [], [], []],
     'App\Controller\ExploradorController::archivosJson' => [['id'], ['_controller' => 'App\\Controller\\ExploradorController::archivosJson'], ['id' => '\\d+'], [['text', '/archivos'], ['variable', '/', '\\d+', 'id', true], ['text', '/explorador']], [], [], []],
     'App\Controller\ExploradorController::subir' => [['id'], ['_controller' => 'App\\Controller\\ExploradorController::subir'], ['id' => '\\d+'], [['text', '/subir'], ['variable', '/', '\\d+', 'id', true], ['text', '/explorador']], [], [], []],
+    'App\Controller\ExploradorController::eliminar' => [['id'], ['_controller' => 'App\\Controller\\ExploradorController::eliminar'], ['id' => '\\d+'], [['text', '/eliminar'], ['variable', '/', '\\d+', 'id', true], ['text', '/explorador']], [], [], []],
     'App\Controller\SecurityController::login' => [[], ['_controller' => 'App\\Controller\\SecurityController::login'], [], [['text', '/login']], [], [], []],
     'App\Controller\SecurityController::logout' => [[], ['_controller' => 'App\\Controller\\SecurityController::logout'], [], [['text', '/logout']], [], [], []],
 ];
