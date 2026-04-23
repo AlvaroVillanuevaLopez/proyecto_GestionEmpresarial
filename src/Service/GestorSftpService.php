@@ -84,4 +84,19 @@ class GestorSftpService
         }
         return $todos;
     }
+
+    public function eliminarArchivo(Empresa $empresa, string $nombreArchivo): bool
+    {
+        $fs = $this->getFs($empresa);
+
+        try {
+            if ($fs->fileExists($nombreArchivo)) {
+                $fs->delete($nombreArchivo);
+                return true;
+            }
+        } catch (\Exception $e) {
+            return false;
+        }
+        return false;
+    }
 }

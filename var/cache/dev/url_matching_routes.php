@@ -51,6 +51,7 @@ return [
                         .'|(\\d+)(*:280)'
                         .'|(\\d+)/archivos(*:302)'
                         .'|(\\d+)/subir(*:321)'
+                        .'|(\\d+)/eliminar(*:343)'
                     .')'
                 .')'
             .')/?$}sDu',
@@ -69,8 +70,9 @@ return [
         253 => [[['_route' => 'app_empresa_delete', '_controller' => 'App\\Controller\\EmpresaController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
         280 => [[['_route' => 'explorador_empresa', '_controller' => 'App\\Controller\\ExploradorController::empresa'], ['id'], null, null, false, true, null]],
         302 => [[['_route' => 'explorador_archivos_json', '_controller' => 'App\\Controller\\ExploradorController::archivosJson'], ['id'], ['GET' => 0], null, false, false, null]],
-        321 => [
-            [['_route' => 'explorador_subir', '_controller' => 'App\\Controller\\ExploradorController::subir'], ['id'], ['POST' => 0], null, false, false, null],
+        321 => [[['_route' => 'explorador_subir', '_controller' => 'App\\Controller\\ExploradorController::subir'], ['id'], ['POST' => 0], null, false, false, null]],
+        343 => [
+            [['_route' => 'explorador_eliminar', '_controller' => 'App\\Controller\\ExploradorController::eliminar'], ['id'], ['POST' => 0], null, false, false, null],
             [null, null, null, null, false, false, 0],
         ],
     ],

@@ -64,5 +64,22 @@ public function subir(Request $request, Empresa $empresa, GestorSftpService $ges
         return $this->json(['success' => false, 'error' => $e->getMessage()], 500);
     }
 }
+
+#[Route('/{id<\d+>}/eliminar', name: 'explorador_eliminar', methods: ['POST'])]
+#[IsGranted('ROLE_ADMIN')]
+public function eliminar(Empresa $empresa, Request $request, GestorSftpService $sftpService): Response
+    {
+        $nombreArchivo = $request->request->get('archivo');
+
+        if (!$nombreArchivo) {
+            return $this->json(['status' => 'error', 'message' => 'Falta el nombre'], 400);
+        }
+
+        if ($sftpService->eliminarArchivo($empresa, $nombreArchivo)) {
+            return $this->json(['status' => 'ok', 'message' => 'Borrado correctamente']);
+        }
+
+        return $this->json(['status' => 'error', 'message' => 'No se encontró el archivo en el SFTP'], 400);
+    }
 }
 

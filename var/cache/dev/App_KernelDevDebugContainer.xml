@@ -511,7 +511,7 @@
     </service>
     <service id="argument_resolver.service" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
       <tag name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" priority="-50">controller.argument_value_resolver</tag>
-      <argument type="service" id=".service_locator.onxwUFv"/>
+      <argument type="service" id=".service_locator.V6CrKu3"/>
     </service>
     <service id="argument_resolver.default" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">
       <tag name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" priority="-100">controller.argument_value_resolver</tag>
@@ -3608,7 +3608,7 @@
     </service>
     <service id="argument_resolver.not_tagged_controller" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
       <tag name="controller.argument_value_resolver" priority="-200"/>
-      <argument type="service" id=".service_locator.onxwUFv"/>
+      <argument type="service" id=".service_locator.V6CrKu3"/>
     </service>
     <service id="debug.log_processor" class="Symfony\Bridge\Monolog\Processor\DebugProcessor">
       <tag name="kernel.reset" method="reset"/>
@@ -8589,6 +8589,19 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.tPz26.u" method="withContext"/>
     </service>
+    <service id=".service_locator.YeJocQS" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="empresa" type="service_closure" id=".errored..service_locator.YeJocQS.App\Entity\Empresa"/>
+        <argument key="sftpService" type="service_closure" id="App\Service\GestorSftpService"/>
+      </argument>
+    </service>
+    <service id=".service_locator.YeJocQS.App\Controller\ExploradorController::eliminar()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\ExploradorController::eliminar()"/>
+      <argument>App\Controller\ExploradorController::eliminar()</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.YeJocQS" method="withContext"/>
+    </service>
     <service id=".service_locator.0MQaTBY" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -8601,7 +8614,7 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.0MQaTBY" method="withContext"/>
     </service>
-    <service id=".service_locator.onxwUFv" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.V6CrKu3" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.1vYpZ1B.kernel::registerContainerConfiguration()"/>
@@ -8617,6 +8630,7 @@
         <argument key="App\Controller\ExploradorController::empresa" type="service_closure" id=".service_locator.NeGtyRO.App\Controller\ExploradorController::empresa()"/>
         <argument key="App\Controller\ExploradorController::archivosJson" type="service_closure" id=".service_locator.tPz26.u.App\Controller\ExploradorController::archivosJson()"/>
         <argument key="App\Controller\ExploradorController::subir" type="service_closure" id=".service_locator.tPz26.u.App\Controller\ExploradorController::subir()"/>
+        <argument key="App\Controller\ExploradorController::eliminar" type="service_closure" id=".service_locator.YeJocQS.App\Controller\ExploradorController::eliminar()"/>
         <argument key="App\Controller\SecurityController::login" type="service_closure" id=".service_locator.0MQaTBY.App\Controller\SecurityController::login()"/>
         <argument key="kernel:registerContainerConfiguration" type="service_closure" id=".service_locator.1vYpZ1B.kernel::registerContainerConfiguration()"/>
         <argument key="kernel:loadRoutes" type="service_closure" id=".service_locator.1vYpZ1B.kernel::loadRoutes()"/>
@@ -8629,6 +8643,7 @@
         <argument key="App\Controller\ExploradorController:empresa" type="service_closure" id=".service_locator.NeGtyRO.App\Controller\ExploradorController::empresa()"/>
         <argument key="App\Controller\ExploradorController:archivosJson" type="service_closure" id=".service_locator.tPz26.u.App\Controller\ExploradorController::archivosJson()"/>
         <argument key="App\Controller\ExploradorController:subir" type="service_closure" id=".service_locator.tPz26.u.App\Controller\ExploradorController::subir()"/>
+        <argument key="App\Controller\ExploradorController:eliminar" type="service_closure" id=".service_locator.YeJocQS.App\Controller\ExploradorController::eliminar()"/>
         <argument key="App\Controller\SecurityController:login" type="service_closure" id=".service_locator.0MQaTBY.App\Controller\SecurityController::login()"/>
       </argument>
     </service>
@@ -9716,6 +9731,9 @@
     </service>
     <service id=".errored..service_locator.tPz26.u.App\Entity\Empresa" class="App\Entity\Empresa">
       <tag name="container.error" message="Cannot autowire service &quot;.service_locator.tPz26.u&quot;: it needs an instance of &quot;App\Entity\Empresa&quot; but this type has been excluded because it's a Doctrine entity."/>
+    </service>
+    <service id=".errored..service_locator.YeJocQS.App\Entity\Empresa" class="App\Entity\Empresa">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.YeJocQS&quot;: it needs an instance of &quot;App\Entity\Empresa&quot; but this type has been excluded because it's a Doctrine entity."/>
     </service>
     <service id=".console.command.about.lazy" class="Symfony\Component\Console\Command\LazyCommand">
       <argument>about</argument>
@@ -10967,7 +10985,7 @@
     <service id="League\Flysystem\FilesystemWriter $defaultStorage" alias="default.storage"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.ryAvHi4" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.onxwUFv"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.V6CrKu3"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.W55Po6X"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id=".Psr\Log\LoggerInterface $request" alias="monolog.logger.request"/>
@@ -11033,6 +11051,7 @@
     <service id=".service_locator.tXtNDnw" alias=".service_locator.0T4o.Jo"/>
     <service id=".service_locator.QejQ2k9" alias=".service_locator.2moJ9zp"/>
     <service id=".service_locator.FNZo9Oo" alias=".service_locator.tPz26.u"/>
+    <service id=".service_locator.FLxr80g" alias=".service_locator.YeJocQS"/>
     <service id=".service_locator.uBwBrvQ" alias=".service_locator.0MQaTBY"/>
     <service id=".service_locator.D6tJ4Px" alias=".service_locator.TJNRSaV"/>
   </services>
