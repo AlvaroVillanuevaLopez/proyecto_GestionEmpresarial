@@ -1,0 +1,111 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ empresa.nombre }} — Archivos PDF{% endblock %}
+
+{% block body %}
+<meta name="turbo-visit-control" content="reload">
+<div class="contenedor">
+    <h1>Archivos PDF de {{ empresa.nombre }}</h1>
+
+    <div id="estado">
+        <p>⏳ Conectando con el servidor SFTP...</p>
+    </div>
+
+    <ul id="lista-pdfs" style="display:none"></ul>
+
+    <hr>
+    <h2>Subir PDF</h2>
+
+    <form id="form-subida">
+        <input type="file" id="input-pdf" accept=".pdf" required>
+        <button type="submit" id="cartero">Subir</button>
+    </form>
+
+    <div id="estado-subida"></div>
+    <br>
+    <a href="{{ path('app_empresa_index') }}">Volver al índice</a>
+</div>
+<script>
+const urlArchivos = "{{ path('explorador_archivos_json', {id: empresa.id}) }}";
+const urlSubir = "{{ path('explorador_subir', {id: empresa.id}) }}";
+
+let cargando = false;
+
+async function cargarArchivos() {
+    if (cargando) return;
+    cargando = true;
+
+    const estado = document.getElementById('estado');
+    const lista = document.getElementById('lista-pdfs');
+
+    estado.style.display = 'block';
+    estado.innerHTML = '<p>⏳ Conectando con el servidor SFTP...</p>';
+    lista.style.display = 'none';
+    lista.innerHTML = '';
+
+    try {
+        const response = await fetch(urlArchivos);
+        const data = await response.json();
+
+        if (data.success) {
+            if (data.archivos.length === 0) {
+                estado.innerHTML = '<p>No hay archivos PDF en este servidor.</p>';
+            } else {
+                estado.style.display = 'none';
+                data.archivos.forEach(archivo => {
+                    const li = document.createElement('li');
+                    li.textContent = archivo;
+                    lista.appendChild(li);
+                });
+                lista.style.display = 'block';
+            }
+        } else {
+            estado.innerHTML = `<p>❌ Error: ${data.error}</p>`;
+        }
+    } catch (error) {
+        estado.innerHTML = `<p>❌ Error de red: ${error.message}</p>`;
+    } finally {
+        cargando = false;
+    }
+}
+
+// Cargar al entrar
+cargarArchivos();
+
+document.getElementById('form-subida').addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const archivo = document.getElementById('input-pdf').files[0];
+    if (!archivo) return;
+
+    const estadoSubida = document.getElementById('estado-subida');
+    estadoSubida.textContent = '⏳ Subiendo...';
+
+    const formData = new FormData();
+    formData.append('pdf', archivo);
+
+    try {
+        const response = await fetch(urlSubir, {
+            method: 'POST',
+            body: formData
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+            estadoSubida.textContent = data.nombreBackup
+                ? `✅ Subido. Versión anterior guardada como: ${data.nombreBackup}`
+                : '✅ Archivo subido correctamente.';
+
+            // Limpiar el input y recargar la lista
+            document.getElementById('input-pdf').value = '';
+            cargarArchivos();
+        } else {
+            estadoSubida.textContent = `❌ Error: ${data.error}`;
+        }
+    } catch (error) {
+        estadoSubida.textContent = `❌ Error de red: ${error.message}`;
+    }
+});
+</script>
+{% endblock %}
